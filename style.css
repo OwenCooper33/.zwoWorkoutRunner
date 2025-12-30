@@ -116,6 +116,16 @@ button:hover:not(:disabled),
   gap: 12px;
 }
 
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.hidden {
+  display: none;
+}
+
 .meta {
   background: #f8fafc;
   padding: 12px;
@@ -167,6 +177,26 @@ button:hover:not(:disabled),
   gap: 2px;
 }
 
+.interval .row-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.small {
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+.pill {
+  display: inline-flex;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  font-weight: 700;
+  font-size: 12px;
+}
+
 .interval-name {
   font-weight: 700;
 }
@@ -208,6 +238,17 @@ button:hover:not(:disabled),
   border-radius: 10px;
   font-size: 15px;
   width: 140px;
+}
+
+.field textarea,
+.field select,
+.field input[type="text"] {
+  width: 100%;
+}
+
+.field textarea {
+  min-height: 96px;
+  resize: vertical;
 }
 
 .connect {
@@ -310,6 +351,15 @@ button:hover:not(:disabled),
   font-weight: 600;
 }
 
+.preview {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 12px;
+  padding: 12px;
+  max-height: 260px;
+  overflow: auto;
+}
+
 .controls {
   display: flex;
   gap: 10px;
@@ -325,4 +375,12 @@ button:hover:not(:disabled),
   body {
     padding: 20px;
   }
+}
+
+a.link-btn {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
 }

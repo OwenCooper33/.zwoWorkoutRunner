@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout Builder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Cycling Workout</p>
+      <h1>Zwift Workout Builder</h1>
+      <p class="lede">Assemble custom blocks, export a .zwo file, and ride it in Zwift or the runner page.</p>
+    </div>
+    <div class="actions">
+      <a class="ghost link-btn" href="index.html">Back to Runner</a>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="card">
+      <h2>Workout Info</h2>
+      <div class="form-grid">
+        <label class="field">
+          <span>Name</span>
+          <input id="nameInput" type="text" value="Custom Workout">
+        </label>
+        <label class="field">
+          <span>Author</span>
+          <input id="authorInput" type="text" value="You">
+        </label>
+      </div>
+      <label class="field">
+        <span>Description</span>
+        <textarea id="descInput" rows="3" placeholder="Optional notes"></textarea>
+      </label>
+    </section>
+
+    <section class="card">
+      <h2>Add Block</h2>
+      <div class="form-grid">
+        <label class="field">
+          <span>Type</span>
+          <select id="intervalType">
+            <option value="Warmup">Warmup (ramp)</option>
+            <option value="SteadyState">Steady State</option>
+            <option value="IntervalsT">Intervals (on/off)</option>
+            <option value="FreeRide">Free Ride</option>
+            <option value="Cooldown">Cooldown (ramp)</option>
+          </select>
+        </label>
+      </div>
+      <div id="fieldsWarmup" class="form-grid typed-fields">
+        <label class="field"><span>Duration (sec)</span><input type="number" id="wuDuration" value="300" min="1"></label>
+        <label class="field"><span>Start % FTP</span><input type="number" id="wuLow" value="55" min="10" max="200"></label>
+        <label class="field"><span>End % FTP</span><input type="number" id="wuHigh" value="75" min="10" max="200"></label>
+      </div>
+      <div id="fieldsSteadyState" class="form-grid typed-fields hidden">
+        <label class="field"><span>Duration (sec)</span><input type="number" id="ssDuration" value="600" min="1"></label>
+        <label class="field"><span>Target % FTP</span><input type="number" id="ssPower" value="90" min="10" max="200"></label>
+      </div>
+      <div id="fieldsIntervalsT" class="form-grid typed-fields hidden">
+        <label class="field"><span>Repeats</span><input type="number" id="intRepeats" value="3" min="1" max="20"></label>
+        <label class="field"><span>On Duration (sec)</span><input type="number" id="intOnDuration" value="180" min="1"></label>
+        <label class="field"><span>Off Duration (sec)</span><input type="number" id="intOffDuration" value="90" min="1"></label>
+        <label class="field"><span>On % FTP</span><input type="number" id="intOnPower" value="110" min="10" max="250"></label>
+        <label class="field"><span>Off % FTP</span><input type="number" id="intOffPower" value="60" min="10" max="200"></label>
+      </div>
+      <div id="fieldsFreeRide" class="form-grid typed-fields hidden">
+        <label class="field"><span>Duration (sec)</span><input type="number" id="frDuration" value="300" min="1"></label>
+      </div>
+      <div id="fieldsCooldown" class="form-grid typed-fields hidden">
+        <label class="field"><span>Duration (sec)</span><input type="number" id="cdDuration" value="240" min="1"></label>
+        <label class="field"><span>Start % FTP</span><input type="number" id="cdHigh" value="75" min="10" max="200"></label>
+        <label class="field"><span>End % FTP</span><input type="number" id="cdLow" value="45" min="10" max="200"></label>
+      </div>
+      <div class="controls">
+        <button id="addIntervalBtn">Add block</button>
+        <button id="clearIntervalsBtn" class="ghost">Clear all</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Blocks</h2>
+      <div id="builderList" class="interval-list empty">
+        <p>No blocks yet. Add one to get started.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Export</h2>
+      <p class="subtle">Downloads a Zwift .zwo file with the info and blocks above.</p>
+      <div class="controls">
+        <button id="downloadBtn">Download .zwo</button>
+        <button id="copyBtn" class="ghost">Copy XML</button>
+      </div>
+      <pre id="preview" class="preview"></pre>
+    </section>
+  </main>
+
+  <template id="builderRowTemplate">
+    <div class="interval builder-row">
+      <div class="interval-bar"></div>
+      <div class="interval-info">
+        <p class="interval-name"></p>
+        <p class="interval-meta"></p>
+      </div>
+      <div class="row-actions">
+        <span class="pill"></span>
+        <button class="ghost small remove-row">Remove</button>
+      </div>
+    </div>
+  </template>
+
+  <script src="builder.js"></script>
+</body>
+</html>
