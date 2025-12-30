@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cycle Training</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Cycling Workout</p>
+      <h1>Zwift Workout Runner</h1>
+      <p class="lede">Import a .zwo file, preview the intervals, and follow along with a simple in-browser trainer UI.</p>
+    </div>
+    <div class="actions">
+      <label class="file-input">
+        <input type="file" id="fileInput" accept=".zwo,.xml">
+        <span>Import .zwo</span>
+      </label>
+      <button id="sampleBtn" class="ghost">Load sample</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="card">
+      <h2>Workout Details</h2>
+      <div id="workoutMeta" class="meta">
+        <p>No workout loaded yet.</p>
+      </div>
+      <div id="intervalList" class="interval-list empty">
+        <p>Intervals will appear here after importing.</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Workout Player</h2>
+      <div class="player">
+        <div class="setup">
+          <label class="field">
+            <span>FTP (watts)</span>
+            <input id="ftpInput" type="number" min="80" max="500" value="250" inputmode="decimal">
+          </label>
+          <div class="connect">
+            <button id="connectBtn" class="ghost">Connect power meter</button>
+            <p id="connectStatus" class="subtle">Not connected (BLE power meters; ANT+ not supported in browsers)</p>
+          </div>
+        </div>
+        <div class="status">
+          <div>
+            <p class="label">Current Segment</p>
+            <p id="currentSegment" class="value">—</p>
+          </div>
+          <div>
+            <p class="label">Target Power</p>
+            <p id="currentPower" class="value">—</p>
+          </div>
+          <div>
+            <p class="label">Actual Power</p>
+            <p id="actualPower" class="value">—</p>
+          </div>
+          <div>
+            <p class="label">Time</p>
+            <p id="timeRemaining" class="value">00:00 / 00:00</p>
+          </div>
+        </div>
+        <div class="progress">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+        <div class="target-block">
+          <div class="target-header">
+            <div>
+              <p class="label">Target range</p>
+              <p id="targetRangeText" class="value">—</p>
+            </div>
+            <p id="targetHint" class="subtle">Set FTP and connect a power meter to see real-time comparison.</p>
+          </div>
+          <div class="target-track">
+            <div id="targetRangeBar" class="target-range"></div>
+            <div id="actualIndicator" class="target-indicator"></div>
+          </div>
+          <div class="target-scale">
+            <span>0%</span>
+            <span>150% FTP</span>
+          </div>
+        </div>
+        <div class="controls">
+          <button id="startBtn">Start</button>
+          <button id="pauseBtn" class="ghost" disabled>Pause</button>
+          <button id="resetBtn" class="ghost" disabled>Reset</button>
+        </div>
+        <p class="hint">Tip: keep this window visible while training; the timer will keep running as long as the tab stays open.</p>
+      </div>
+    </section>
+  </main>
+
+  <template id="intervalTemplate">
+    <div class="interval">
+      <div class="interval-bar"></div>
+      <div class="interval-info">
+        <p class="interval-name"></p>
+        <p class="interval-meta"></p>
+      </div>
+      <p class="interval-duration"></p>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
