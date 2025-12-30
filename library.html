@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout Library</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Cycling Workout</p>
+      <h1>Workout Library</h1>
+      <p class="lede">Pick a curated session, scale it to your FTP, then send it straight to the runner.</p>
+    </div>
+    <div class="actions">
+      <a class="ghost link-btn" href="index.html">Open Runner</a>
+      <a class="ghost link-btn" href="builder.html">Open Builder</a>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="card">
+      <h2>Choose workout</h2>
+      <div class="field">
+        <span>Your FTP (watts)</span>
+        <input id="ftpInput" type="number" min="80" max="500" value="250" inputmode="decimal">
+      </div>
+      <div id="workoutList" class="interval-list library-list"></div>
+    </section>
+
+    <section class="card">
+      <h2>Details</h2>
+      <div id="detailMeta" class="meta">
+        <p>Select a workout to see details.</p>
+      </div>
+      <div id="detailIntervals" class="interval-list empty">
+        <p>Intervals will appear here.</p>
+      </div>
+      <div class="controls">
+        <button id="loadBtn" disabled>Load in Runner</button>
+        <button id="copyBtn" class="ghost" disabled>Copy .zwo</button>
+      </div>
+      <pre id="xmlPreview" class="preview"></pre>
+    </section>
+  </main>
+
+  <template id="workoutCardTemplate">
+    <div class="interval workout-card clickable">
+      <div class="interval-bar"></div>
+      <div class="interval-info">
+        <p class="interval-name"></p>
+        <p class="interval-meta"></p>
+      </div>
+      <div class="interval-duration"></div>
+    </div>
+  </template>
+
+  <template id="detailIntervalTemplate">
+    <div class="interval">
+      <div class="interval-bar"></div>
+      <div class="interval-info">
+        <p class="interval-name"></p>
+        <p class="interval-meta"></p>
+      </div>
+      <p class="interval-duration"></p>
+    </div>
+  </template>
+
+  <script src="library.js"></script>
+</body>
+</html>

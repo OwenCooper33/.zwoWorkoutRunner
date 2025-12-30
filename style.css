@@ -361,6 +361,19 @@ a.link-btn:hover {
   overflow: auto;
 }
 
+.library-list .workout-card {
+  border: 1px solid #e2e8f0;
+}
+
+.library-list .workout-card.active {
+  outline: 2px solid #2563eb;
+  background: #e0e7ff;
+}
+
+.library-list .interval-duration {
+  font-weight: 700;
+}
+
 .controls {
   display: flex;
   gap: 10px;

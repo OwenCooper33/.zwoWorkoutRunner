@@ -482,5 +482,17 @@ const sampleZwo = `<?xml version="1.0" encoding="UTF-8"?>
   </workout>
 </workout_file>`;
 
+const libraryXml = localStorage.getItem("libraryWorkoutXml");
+if (libraryXml) {
+  try {
+    loadWorkoutFromText(libraryXml);
+  } catch (err) {
+    showError(err);
+  } finally {
+    localStorage.removeItem("libraryWorkoutXml");
+    localStorage.removeItem("libraryWorkoutName");
+  }
+}
+
 // Initialize empty UI state
 updatePlayerUi();
